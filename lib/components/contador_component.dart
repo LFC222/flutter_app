@@ -12,23 +12,23 @@ class _ContadorComponentState extends State<ContadorComponent> {
 
    @override
    Widget build(BuildContext context) {
-       return Scaffold(
-           body: SizedBox(
-            height: MediaQuery.of(context).size.height,
+       return SizedBox(
+            height: MediaQuery.of(context).size.height - 100,
             width: MediaQuery.of(context).size.width,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text('Contador $counter')],
+              children: [
+                Text('Contador $counter'),
+                ElevatedButton(
+                  onPressed: (){
+                    setState((){
+                      counter++;
+                    });
+                  },
+                  child: const Text('Incrementar'),
+                  ),
+                ],
             ),
-           ),
-           floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: (){
-              setState(() {
-                counter++;
-              });
-            },
-           ),
-       );
+           );
   }
 }
